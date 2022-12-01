@@ -1,25 +1,36 @@
-import './styleCategoryes.css'
-import useFetchCategories from "../../apiHook/useDataCategories";
-import {useSelector} from "react-redux";
 import {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+
+import useFetchCategories from "../../apiHook/useDataCategories";
 import {IDataCategories, ITypeCategories} from "../../types/dataCategoriesType";
 import useDataCats from "../../apiHook/useDataCats";
+import {constSettings} from "../../types/settingsTypes";
+
+import './styleCategoryes.css'
 
 const Categories = () => {
     const [id, setId] = useState('1')
+    
+    const dispatch = useDispatch()
     const fetchDataCategories = useFetchCategories()
     const fetchDataCats = useDataCats()
-    useEffect(() => {
-        fetchDataCategories()
-        fetchDataCats(id)
-    }, [id])
+    
+    const {dataCategories} = useSelector((state:IDataCategories):any => state.dataCategories)
     
     const handleId = (item:ITypeCategories) => {
         setId(item.id)
     }
     
-    const {dataCategories} = useSelector((state:IDataCategories):any => state.dataCategories)
-
+    useEffect(() => {
+        fetchDataCategories()
+        fetchDataCats(id)
+        dispatch({
+            type:constSettings.ID_CATEGORIES,
+            payload:id
+        })
+    }, [id])
+    
+    
     return (
         <div className='categories_container'>
             {

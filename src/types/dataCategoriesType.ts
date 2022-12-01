@@ -12,7 +12,7 @@ export interface ITypeCats {
 
 export interface IDataCategories {
     dataCategories?: Array<ITypeCategories>
-    cats?: Array<ITypeCats>
+    cats: Array<ITypeCats> | [any]
 }
 
 interface actionDataCategories {
@@ -29,5 +29,5 @@ export type actionsType = actionDataCategories & actionDataCats
 
 export enum constActionType {
     DATA_CATEGORIES = 'DATA_CATEGORIES',
-    DATA_CATS = 'DATA_CATS'
+    DATA_CATS = 'DATA_CATS',
 }

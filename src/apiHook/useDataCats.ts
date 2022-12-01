@@ -3,8 +3,9 @@ import {constActionType} from "../types/dataCategoriesType";
 
 const useFetchCats = () => {
     const dispatch = useDispatch()
-    const fetchDataCats = (idCategories:string) => {
-        fetch(`https://api.thecatapi.com/v1/images/search?limit=10&page=1&category_ids=${idCategories}`)
+    
+    const fetchDataCats = (idCategories:string, idCatsPage='10') => {
+        fetch(`https://api.thecatapi.com/v1/images/search?limit=${idCatsPage}&page=1&category_ids=${idCategories}`)
             .then(response => response.json())
             .then(data => dispatch({
                 type:constActionType.DATA_CATS,
