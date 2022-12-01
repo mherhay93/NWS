@@ -1,4 +1,7 @@
 .main_container {
     width: 100%;
-    background-color: rebeccapurple;
+}
+.main_items {
+    width: 14vw;
+
 }

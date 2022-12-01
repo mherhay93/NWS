@@ -1,13 +1,17 @@
 import {actionsType, constActionType, IDataCategories} from "../../types/dataCategoriesType";
 
 const initialState:IDataCategories = {
-    dataCategories: []
+    dataCategories: [],
+    cats: []
 }
 
 const dataReducer = (state = initialState, action:actionsType):IDataCategories => {
     switch (action.type) {
         case constActionType.DATA_CATEGORIES:
-            return state
+            return {...state, dataCategories:[action.payload]}
+        case constActionType.DATA_CATS:
+            console.log(action.payload, 'payload')
+            return {...state, cats:[action.payload]}
         default:
             return state
     }
