@@ -1,7 +1,13 @@
+import Categories from "../Categories/Categories";
+import Main from "../Main/Main";
+
+import './styleRoot.css'
+
 const Root = () => {
   return (
       <div className='container_root'>
-          Root
+         <Categories/>
+          <Main/>
       </div>
   )
 }
